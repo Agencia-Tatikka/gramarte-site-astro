@@ -3,85 +3,122 @@ import BaseLayout from '@/layouts/BaseLayout.astro';
 import { siteConfig } from '@/config/site.config';
 
 const whatsappUrl = `https://wa.me/${siteConfig.contact.whatsapp}?text=${encodeURIComponent(siteConfig.contact.whatsappMessage || '')}`;
+
+const servicos = [
+  {
+    titulo: "Paisagismo",
+    descricao: "Planejamento e composição estética de áreas verdes, harmonizando espécies, texturas e valorizando o patrimônio.",
+    icone: "folha"
+  },
+  {
+    titulo: "Manutenção de Jardim",
+    descricao: "Cronograma contínuo de cuidados, podas de conformação, adubação de reposição e controle fitossanitário.",
+    icone: "cuidados"
+  },
+  {
+    titulo: "Implantação de Jardim",
+    descricao: "Preparação e correção de solo, plantio de mudas nobres e execução técnica de novos projetos do zero.",
+    icone: "plantio"
+  },
+  {
+    titulo: "Jardim Vertical",
+    descricao: "Estruturação de muros e painéis verdes para otimização de espaço com sofisticação em varandas e fachadas.",
+    icone: "vertical"
+  },
+  {
+    titulo: "Corte de Grama",
+    descricao: "Nivelamento e poda técnica de gramados com maquinário profissional e descarte responsável em Ecopontos.",
+    icone: "corte"
+  },
+  {
+    titulo: "Revitalização de Jardim",
+    descricao: "Recuperação de canteiros degradados, troca de forrações e renovação da vitalidade e cor das plantas.",
+    icone: "revitalizacao"
+  },
+  {
+    titulo: "Projetos Personalizados",
+    descricao: "Elaboração de layouts em 3D, sistemas de irrigação automatizada e iluminação externa para áreas comuns.",
+    icone: "projeto"
+  }
+];
 ---
 
 <BaseLayout 
   title="Gramarte • Paisagismo & Manutenção de Condomínios (Em Breve)"
   description="Estamos cultivando nosso novo portal digital. Atendimento e manutenção de áreas verdes para condomínios em São Paulo, Grande ABC e Alphaville já disponíveis."
+  hideHeader={true}
+  hideFooter={true}
+  hideWhatsApp={true}
+  bodyClass="bg-white text-stone-900 font-sans antialiased"
 >
   <main class="min-h-screen bg-white text-stone-900 flex flex-col justify-between selection:bg-emerald-100 selection:text-emerald-900">
     
     <!-- Top Header -->
-    <header class="w-full max-w-7xl mx-auto px-6 py-8 flex items-center justify-between border-b border-stone-100">
-      <a href="/" class="flex items-center gap-3 group">
+    <header class="w-full max-w-6xl mx-auto px-4 sm:px-6 py-6 md:py-8 flex items-center justify-between border-b border-stone-100">
+      <a href="/" class="flex items-center group">
         <img 
           src="/logo-gramarte.png" 
-          alt="Gramarte Paisagismo" 
-          class="h-12 w-auto object-contain transition-transform group-hover:scale-105"
-          onerror="this.style.display='none'"
+          alt="Gramarte" 
+          class="h-10 sm:h-12 md:h-14 w-auto object-contain transition-transform group-hover:scale-105"
         />
-        <div class="flex flex-col">
-          <span class="text-2xl font-bold tracking-tight text-emerald-950 font-serif">Gramarte</span>
-          <span class="text-xs uppercase tracking-widest text-stone-500 font-medium">Paisagismo & Manutenção</span>
-        </div>
       </a>
 
-      <a 
-        href={siteConfig.socials.instagram} 
-        target="_blank" 
-        rel="noopener noreferrer" 
-        class="inline-flex items-center gap-2 text-sm font-medium text-stone-600 hover:text-emerald-700 bg-stone-50 hover:bg-emerald-50 px-4 py-2 rounded-full border border-stone-200 hover:border-emerald-200 transition-all"
-      >
-        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
-          <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
-        </svg>
-        <span>@gramarte.jardinagem</span>
-      </a>
+      {siteConfig.socials.instagram && (
+        <a 
+          href={siteConfig.socials.instagram} 
+          target="_blank" 
+          rel="noopener noreferrer" 
+          class="inline-flex items-center gap-2 text-xs sm:text-sm font-medium text-stone-600 hover:text-emerald-700 bg-stone-50 hover:bg-emerald-50 px-3.5 sm:px-4 py-2 rounded-full border border-stone-200 hover:border-emerald-200 transition-all"
+        >
+          <svg class="w-4 h-4 text-emerald-700" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+          </svg>
+          <span>@gramarte.jardinagem</span>
+        </a>
+      )}
     </header>
 
-    <!-- Main Hero & Content -->
-    <div class="w-full max-w-5xl mx-auto px-6 py-12 md:py-16 text-center">
+    <!-- Main Hero Content -->
+    <div class="w-full max-w-5xl mx-auto px-4 sm:px-6 py-10 md:py-16 text-center">
       
-      <!-- Badge -->
-      <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-emerald-50 border border-emerald-200 text-emerald-800 text-xs md:text-sm font-semibold mb-8 shadow-sm">
-        <svg class="w-4 h-4 text-emerald-600 animate-pulse" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
-        </svg>
+      <!-- Status Badge -->
+      <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-50 border border-emerald-200 text-emerald-800 text-xs sm:text-sm font-semibold mb-6 shadow-sm">
+        <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
         <span>Novo Site em Construção</span>
       </div>
 
       <!-- Headline -->
-      <h1 class="text-4xl md:text-6xl font-bold tracking-tight text-emerald-950 font-serif max-w-4xl mx-auto leading-tight md:leading-tight mb-6">
+      <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-emerald-950 font-serif max-w-4xl mx-auto leading-tight sm:leading-tight mb-6">
         O padrão de cuidado e jardinagem que o seu condomínio merece.
       </h1>
 
       <!-- Subtitle -->
-      <p class="text-lg md:text-xl text-stone-600 max-w-3xl mx-auto leading-relaxed mb-10 font-sans">
+      <p class="text-base sm:text-lg md:text-xl text-stone-600 max-w-3xl mx-auto leading-relaxed mb-8 sm:mb-10">
         Estamos cultivando nossa nova experiência digital. Mas o atendimento, a manutenção de áreas verdes e a revitalização de jardins para condomínios em São Paulo, Grande ABC e Alphaville <strong class="text-emerald-900 font-semibold">já estão disponíveis</strong>.
       </p>
 
       <!-- Action Buttons (WhatsApp + Email) -->
-      <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16">
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-3.5 sm:gap-4 mb-14">
         
-        <!-- WhatsApp Primary Button -->
+        <!-- Primary WhatsApp Button -->
         <a 
           href={whatsappUrl} 
           target="_blank" 
           rel="noopener noreferrer" 
-          class="w-full sm:w-auto inline-flex items-center justify-center gap-3 bg-emerald-700 hover:bg-emerald-800 text-white font-semibold text-base px-8 py-4 rounded-xl shadow-lg shadow-emerald-900/10 hover:shadow-emerald-900/20 hover:-translate-y-0.5 transition-all"
+          class="w-full sm:w-auto inline-flex items-center justify-center gap-3 bg-emerald-700 hover:bg-emerald-800 text-white font-semibold text-base px-7 py-3.5 sm:py-4 rounded-xl shadow-lg shadow-emerald-900/10 hover:shadow-emerald-900/20 hover:-translate-y-0.5 transition-all"
         >
-          <svg class="w-6 h-6 fill-current" viewBox="0 0 24 24">
+          <svg class="w-5 h-5 sm:w-6 sm:h-6 fill-current" viewBox="0 0 24 24">
             <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.771-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.006c.106.005.249-.04.39.298.144.347.491 1.2.534 1.287.043.087.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.086-.177.18-.076.354.101.174.449.741.964 1.201.662.591 1.221.774 1.394.86s.274.072.376-.043c.101-.116.433-.506.549-.68.116-.173.231-.145.39-.087s1.011.477 1.184.564.289.13.332.202c.045.072.045.419-.099.824zm-3.423-14.416c-6.627 0-12 5.373-12 12 0 2.122.554 4.115 1.524 5.845l-1.615 5.9 6.046-1.585c1.667.909 3.57 1.428 5.597 1.428 6.627 0 12-5.373 12-12 0-6.627-5.373-12-12-12z"/>
           </svg>
           <span>Fale com a Nossa Equipe no WhatsApp</span>
         </a>
 
-        <!-- Email Secondary Link -->
+        <!-- Secondary Email Button -->
         <a 
           href={`mailto:${siteConfig.contact.email}`} 
-          class="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-stone-50 hover:bg-stone-100 text-stone-800 font-medium text-base px-6 py-4 rounded-xl border border-stone-200 hover:border-stone-300 transition-all"
+          class="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-stone-50 hover:bg-stone-100 text-stone-800 font-medium text-base px-6 py-3.5 sm:py-4 rounded-xl border border-stone-200 hover:border-stone-300 transition-all"
         >
-          <svg class="w-5 h-5 text-stone-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <svg class="w-5 h-5 text-emerald-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
           </svg>
           <span>{siteConfig.contact.email}</span>
@@ -90,68 +127,133 @@ const whatsappUrl = `https://wa.me/${siteConfig.contact.whatsapp}?text=${encodeU
       </div>
 
       <!-- Feature / Garden Image Showcase -->
-      <div class="relative rounded-3xl overflow-hidden shadow-2xl border border-stone-100 max-w-4xl mx-auto mb-16 group">
+      <div class="relative rounded-2xl md:rounded-3xl overflow-hidden shadow-xl border border-stone-100 max-w-4xl mx-auto mb-16 group">
         <img 
           src="/jardim-hero.jpg" 
           alt="Jardim em Condomínio Residencial por Gramarte" 
-          class="w-full h-72 md:h-96 object-cover object-center transition-transform duration-700 group-hover:scale-105"
+          class="w-full h-60 sm:h-72 md:h-96 object-cover object-center transition-transform duration-700 group-hover:scale-105"
         />
-        <div class="absolute inset-0 bg-gradient-to-t from-emerald-950/80 via-emerald-950/20 to-transparent flex items-end p-6 md:p-8 text-left">
-          <div class="text-white">
-            <span class="inline-block text-xs uppercase tracking-wider text-emerald-300 font-semibold mb-1">Paisagismo Condominial</span>
-            <p class="text-sm md:text-base text-stone-200 font-light max-w-xl">
-              Cuidamos de cada detalhe com visitas técnicas de acompanhamento, equipe treinada e compromisso absoluto com o seu patrimônio.
+        <div class="absolute inset-0 bg-gradient-to-t from-emerald-950/85 via-emerald-950/30 to-transparent flex items-end p-5 sm:p-7 md:p-8 text-left">
+          <div class="text-white max-w-2xl">
+            <span class="inline-block text-xs uppercase tracking-wider text-emerald-300 font-semibold mb-1">Paisagismo Condominial & Corporativo</span>
+            <p class="text-xs sm:text-sm md:text-base text-stone-200 font-light leading-relaxed">
+              Cuidamos de cada detalhe com visitas de acompanhamento, equipe registrada e compromisso absoluto com o seu patrimônio.
             </p>
           </div>
         </div>
       </div>
 
-      <!-- 3 Pillars Grid -->
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-left max-w-4xl mx-auto">
+      <!-- 7 Services Section -->
+      <div class="text-center max-w-5xl mx-auto">
         
-        <div class="p-6 rounded-2xl bg-stone-50 border border-stone-100 hover:border-emerald-200 hover:bg-emerald-50/40 transition-all">
-          <div class="w-10 h-10 rounded-xl bg-emerald-100 text-emerald-800 flex items-center justify-center mb-4">
-            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
-            </svg>
-          </div>
-          <h3 class="text-lg font-bold text-emerald-950 mb-2">Zelo & Estética</h3>
-          <p class="text-sm text-stone-600 leading-relaxed">
-            Jardins vivos, saudáveis e bem cuidados em todas as estações do ano, transformando o ambiente comum.
-          </p>
+        <div class="mb-8">
+          <span class="text-xs uppercase tracking-widest text-emerald-800 font-bold">Nossas Especialidades</span>
+          <h2 class="text-2xl sm:text-3xl font-bold font-serif text-emerald-950 mt-1">Serviços que Oferecemos</h2>
         </div>
 
-        <div class="p-6 rounded-2xl bg-stone-50 border border-stone-100 hover:border-emerald-200 hover:bg-emerald-50/40 transition-all">
-          <div class="w-10 h-10 rounded-xl bg-emerald-100 text-emerald-800 flex items-center justify-center mb-4">
-            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-            </svg>
+        <!-- 7 Cards Responsive Grid -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5 text-left">
+          
+          <!-- 1. Paisagismo -->
+          <div class="p-5 sm:p-6 rounded-2xl bg-stone-50 border border-stone-200/80 hover:border-emerald-300 hover:bg-emerald-50/40 hover:shadow-sm transition-all">
+            <div class="w-10 h-10 rounded-xl bg-emerald-100 text-emerald-800 flex items-center justify-center mb-3.5">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+              </svg>
+            </div>
+            <h3 class="text-base sm:text-lg font-bold text-emerald-950 mb-1.5">Paisagismo</h3>
+            <p class="text-xs sm:text-sm text-stone-600 leading-relaxed">
+              Planejamento e composição estética de áreas verdes, harmonizando espécies, texturas e valorizando o patrimônio.
+            </p>
           </div>
-          <h3 class="text-lg font-bold text-emerald-950 mb-2">Gestão Presente</h3>
-          <p class="text-sm text-stone-600 leading-relaxed">
-            Compromisso com a pontualidade, comunicação transparente e acompanhamento constante com síndicos.
-          </p>
-        </div>
 
-        <div class="p-6 rounded-2xl bg-stone-50 border border-stone-100 hover:border-emerald-200 hover:bg-emerald-50/40 transition-all">
-          <div class="w-10 h-10 rounded-xl bg-emerald-100 text-emerald-800 flex items-center justify-center mb-4">
-            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
-            </svg>
+          <!-- 2. Manutenção de Jardim -->
+          <div class="p-5 sm:p-6 rounded-2xl bg-stone-50 border border-stone-200/80 hover:border-emerald-300 hover:bg-emerald-50/40 hover:shadow-sm transition-all">
+            <div class="w-10 h-10 rounded-xl bg-emerald-100 text-emerald-800 flex items-center justify-center mb-3.5">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
+              </svg>
+            </div>
+            <h3 class="text-base sm:text-lg font-bold text-emerald-950 mb-1.5">Manutenção de Jardim</h3>
+            <p class="text-xs sm:text-sm text-stone-600 leading-relaxed">
+              Cronograma contínuo de cuidados, podas de conformação, adubação de reposição e controle fitossanitário.
+            </p>
           </div>
-          <h3 class="text-lg font-bold text-emerald-950 mb-2">Segurança Total</h3>
-          <p class="text-sm text-stone-600 leading-relaxed">
-            Equipe 100% própria registrada (CLT), descarte verde responsável e respeito rigoroso às normas do condomínio.
-          </p>
+
+          <!-- 3. Implantação de Jardim -->
+          <div class="p-5 sm:p-6 rounded-2xl bg-stone-50 border border-stone-200/80 hover:border-emerald-300 hover:bg-emerald-50/40 hover:shadow-sm transition-all">
+            <div class="w-10 h-10 rounded-xl bg-emerald-100 text-emerald-800 flex items-center justify-center mb-3.5">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
+              </svg>
+            </div>
+            <h3 class="text-base sm:text-lg font-bold text-emerald-950 mb-1.5">Implantação de Jardim</h3>
+            <p class="text-xs sm:text-sm text-stone-600 leading-relaxed">
+              Preparação e correção de solo, plantio de mudas nobres e execução técnica de novos projetos do zero.
+            </p>
+          </div>
+
+          <!-- 4. Jardim Vertical -->
+          <div class="p-5 sm:p-6 rounded-2xl bg-stone-50 border border-stone-200/80 hover:border-emerald-300 hover:bg-emerald-50/40 hover:shadow-sm transition-all">
+            <div class="w-10 h-10 rounded-xl bg-emerald-100 text-emerald-800 flex items-center justify-center mb-3.5">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z" />
+              </svg>
+            </div>
+            <h3 class="text-base sm:text-lg font-bold text-emerald-950 mb-1.5">Jardim Vertical</h3>
+            <p class="text-xs sm:text-sm text-stone-600 leading-relaxed">
+              Estruturação de muros e painéis verdes para otimização de espaço com sofisticação em varandas e fachadas.
+            </p>
+          </div>
+
+          <!-- 5. Corte de Grama -->
+          <div class="p-5 sm:p-6 rounded-2xl bg-stone-50 border border-stone-200/80 hover:border-emerald-300 hover:bg-emerald-50/40 hover:shadow-sm transition-all">
+            <div class="w-10 h-10 rounded-xl bg-emerald-100 text-emerald-800 flex items-center justify-center mb-3.5">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.121 14.121L19 19m-7-7l7-7m-7 7l-2.879 2.879M12 12L9.121 9.121m0 5.758a3 3 0 10-4.243 4.243 3 3 0 004.243-4.243zm0-5.758a3 3 0 10-4.243-4.243 3 3 0 004.243 4.243z" />
+              </svg>
+            </div>
+            <h3 class="text-base sm:text-lg font-bold text-emerald-950 mb-1.5">Corte de Grama</h3>
+            <p class="text-xs sm:text-sm text-stone-600 leading-relaxed">
+              Nivelamento e poda técnica de gramados com maquinário profissional e descarte responsável em Ecopontos.
+            </p>
+          </div>
+
+          <!-- 6. Revitalização de Jardim -->
+          <div class="p-5 sm:p-6 rounded-2xl bg-stone-50 border border-stone-200/80 hover:border-emerald-300 hover:bg-emerald-50/40 hover:shadow-sm transition-all">
+            <div class="w-10 h-10 rounded-xl bg-emerald-100 text-emerald-800 flex items-center justify-center mb-3.5">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
+              </svg>
+            </div>
+            <h3 class="text-base sm:text-lg font-bold text-emerald-950 mb-1.5">Revitalização de Jardim</h3>
+            <p class="text-xs sm:text-sm text-stone-600 leading-relaxed">
+              Recuperação de canteiros degradados, troca de forrações e renovação da vitalidade e cor das plantas.
+            </p>
+          </div>
+
+          <!-- 7. Projetos Personalizados -->
+          <div class="p-5 sm:p-6 rounded-2xl bg-stone-50 border border-stone-200/80 hover:border-emerald-300 hover:bg-emerald-50/40 hover:shadow-sm transition-all sm:col-span-2 lg:col-span-3">
+            <div class="w-10 h-10 rounded-xl bg-emerald-100 text-emerald-800 flex items-center justify-center mb-3.5">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+              </svg>
+            </div>
+            <h3 class="text-base sm:text-lg font-bold text-emerald-950 mb-1.5">Projetos Personalizados</h3>
+            <p class="text-xs sm:text-sm text-stone-600 leading-relaxed max-w-2xl">
+              Elaboração de layouts paisagísticos em 3D, sistemas inteligentes de irrigação automatizada e projetos luminotécnicos externos para áreas comuns.
+            </p>
+          </div>
+
         </div>
 
       </div>
 
     </div>
 
-    <!-- Footer -->
-    <footer class="w-full border-t border-stone-100 bg-white py-8 px-6 text-center text-xs text-stone-500">
-      <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
+    <!-- Minimalist Footer on White -->
+    <footer class="w-full border-t border-stone-100 bg-white py-8 px-4 sm:px-6 text-center text-xs text-stone-500">
+      <div class="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
         <p>
           © 2026 Gramarte Paisagismo & Manutenção. Todos os direitos reservados.
         </p>

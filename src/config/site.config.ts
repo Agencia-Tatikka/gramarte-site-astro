@@ -60,7 +60,7 @@ export const siteConfig: SiteConfig = {
     whatsapp: "5511940466849",
     whatsappMessage: "Olá, Luana! Vim pelo site da Gramarte e gostaria de agendar uma visita técnica gratuita para o meu condomínio.",
     email: "contato@gramarte.com.br",
-    address: "São Paulo, Grande ABC & Alphaville - SP, Brasil",
+    address: "São Paulo, Grande ABC, Litoral e Interior - SP, Brasil",
     webhookUrl: ""
   },
   socials: {

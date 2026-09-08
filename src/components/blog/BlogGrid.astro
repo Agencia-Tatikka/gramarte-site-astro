@@ -1,0 +1,95 @@
+---
+import type { Post } from '@/types';
+import BlogCard from './BlogCard.astro';
+
+interface Props {
+  posts: Post[];
+  title?: string;
+  subtitle?: string;
+  showFilters?: boolean;
+}
+
+const {
+  posts,
+  title = "Artigos & Insights Estratégicos",
+  subtitle = "Conteúdos práticos, análises de mercado e inteligência de negócios para a sua empresa.",
+  showFilters = true
+} = Astro.props;
+
+const categorias = ['Todas', ...Array.from(new Set(posts.map(p => p.categoria)))];
+---
+
+<section class="py-20 relative overflow-hidden">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <!-- Header da Seção -->
+    <div class="text-center max-w-3xl mx-auto mb-12">
+      <h2 class="text-3xl sm:text-4xl font-extrabold font-display text-white tracking-tight">
+        {title}
+      </h2>
+      <p class="mt-4 text-base sm:text-lg text-slate-400">
+        {subtitle}
+      </p>
+
+      <!-- Filtros por Categoria -->
+      {showFilters && categorias.length > 2 && (
+        <div class="mt-8 flex flex-wrap items-center justify-center gap-2" id="blog-filter-container">
+          {categorias.map((cat, idx) => (
+            <button
+              type="button"
+              data-category={cat}
+              class={`blog-filter-btn px-4 py-2 rounded-xl text-xs font-semibold transition-all duration-200 border ${
+                idx === 0
+                  ? 'bg-indigo-600 text-white border-indigo-500 shadow-md shadow-indigo-500/20'
+                  : 'bg-slate-900/80 text-slate-400 border-slate-800 hover:text-white hover:border-slate-700'
+              }`}
+            >
+              {cat}
+            </button>
+          ))}
+        </div>
+      )}
+    </div>
+
+    <!-- Grade de Artigos -->
+    {posts.length > 0 ? (
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="blog-items-grid">
+        {posts.map(p => (
+          <div class="blog-item-wrapper" data-category={p.categoria}>
+            <BlogCard post={p} />
+          </div>
+        ))}
+      </div>
+    ) : (
+      <div class="text-center py-16 bg-slate-900/30 rounded-3xl border border-slate-800">
+        <p class="text-slate-400 text-base">Nenhum artigo publicado no momento.</p>
+      </div>
+    )}
+  </div>
+</section>
+
+<script>
+  const buttons = document.querySelectorAll<HTMLButtonElement>('.blog-filter-btn');
+  const items = document.querySelectorAll<HTMLElement>('.blog-item-wrapper');
+
+  buttons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const selected = btn.getAttribute('data-category');
+
+      buttons.forEach(b => {
+        b.classList.remove('bg-indigo-600', 'text-white', 'border-indigo-500', 'shadow-md', 'shadow-indigo-500/20');
+        b.classList.add('bg-slate-900/80', 'text-slate-400', 'border-slate-800');
+      });
+      btn.classList.remove('bg-slate-900/80', 'text-slate-400', 'border-slate-800');
+      btn.classList.add('bg-indigo-600', 'text-white', 'border-indigo-500', 'shadow-md', 'shadow-indigo-500/20');
+
+      items.forEach(item => {
+        const itemCat = item.getAttribute('data-category');
+        if (selected === 'Todas' || itemCat === selected) {
+          item.style.display = 'block';
+        } else {
+          item.style.display = 'none';
+        }
+      });
+    });
+  });
+</script>

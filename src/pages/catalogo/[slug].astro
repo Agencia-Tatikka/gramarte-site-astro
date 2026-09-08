@@ -1,0 +1,150 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Button from '@/components/ui/Button.astro';
+import { getProdutos } from '@/db/schema';
+import { siteConfig } from '@/config/site.config';
+import type { Produto } from '@/types';
+
+export async function getStaticPaths() {
+  const produtos = await getProdutos();
+  return produtos.map((prod) => ({
+    params: { slug: prod.slug },
+    props: { produto: prod }
+  }));
+}
+
+interface Props {
+  produto: Produto;
+}
+
+const { produto } = Astro.props;
+
+const catalogBase = siteConfig.routes.catalogSlug || 'catalogo';
+const whatsappText = encodeURIComponent(`Olá! Vim pela página do produto *${produto.nome}* no site e gostaria de solicitar um atendimento/orçamento.`);
+const whatsappUrl = `https://wa.me/${siteConfig.contact.whatsapp}?text=${whatsappText}`;
+
+// Schema JSON-LD para Google Rich Snippets (Product)
+const productSchema = {
+  "@context": "https://schema.org",
+  "@type": "Product",
+  "name": produto.nome,
+  "image": [produto.imagemPrincipal],
+  "description": produto.resumo || produto.descricaoCompleta,
+  "category": produto.categoria,
+  "offers": {
+    "@type": "Offer",
+    "priceCurrency": "BRL",
+    "availability": produto.status === 'ativo' ? "https://schema.org/InStock" : "https://schema.org/OutOfStock",
+    "url": `${siteConfig.url}/${catalogBase}/${produto.slug}`
+  }
+};
+---
+
+<BaseLayout
+  title={`${produto.nome} | ${siteConfig.name}`}
+  description={produto.resumo || produto.descricaoCompleta || `Conheça ${produto.nome} na ${siteConfig.name}.`}
+  ogImage={produto.imagemPrincipal}
+>
+  <!-- Injeção de Microdados Schema.org -->
+  <script type="application/ld+json" set:html={JSON.stringify(productSchema)} />
+
+  <main class="pt-24 pb-20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <!-- Breadcrumb -->
+      <nav class="flex items-center gap-2 text-xs font-semibold text-slate-400 py-6">
+        <a href="/" class="hover:text-white transition-colors">Início</a>
+        <span>/</span>
+        <a href={`/${catalogBase}`} class="hover:text-white transition-colors">Catálogo</a>
+        <span>/</span>
+        <span class="text-indigo-400">{produto.nome}</span>
+      </nav>
+
+      <!-- Grade Principal do Produto -->
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start mt-4">
+        <!-- Imagem & Mídia -->
+        <div class="space-y-4">
+          <div class="relative aspect-4/3 w-full rounded-3xl overflow-hidden bg-slate-900 border border-slate-800 shadow-2xl">
+            <img
+              src={produto.imagemPrincipal}
+              alt={produto.nome}
+              class="w-full h-full object-cover"
+            />
+            <span class="absolute top-4 left-4 px-3.5 py-1.5 rounded-full text-xs font-bold bg-slate-950/80 backdrop-blur-md text-indigo-300 border border-slate-800">
+              {produto.categoria}
+            </span>
+          </div>
+
+          <!-- Galeria Secundária (se houver) -->
+          {produto.galeriaImagens && produto.galeriaImagens.length > 0 && (
+            <div class="grid grid-cols-4 gap-3">
+              {produto.galeriaImagens.map((imgUrl, i) => (
+                <div class="aspect-square rounded-xl overflow-hidden border border-slate-800 bg-slate-900">
+                  <img src={imgUrl} alt={`Foto ${i + 1}`} class="w-full h-full object-cover hover:scale-110 transition-transform cursor-pointer" />
+                </div>
+              ))}
+            </div>
+          )}
+        </div>
+
+        <!-- Informações e Detalhes -->
+        <div class="flex flex-col space-y-6">
+          <div>
+            <h1 class="text-3xl sm:text-4xl font-extrabold font-display text-white tracking-tight leading-tight">
+              {produto.nome}
+            </h1>
+            <div class="mt-4 flex items-center gap-4">
+              <span class="text-2xl font-extrabold text-indigo-400 font-display">
+                {produto.preco || 'Sob Consulta'}
+              </span>
+              <span class={`px-3 py-1 rounded-full text-xs font-semibold ${
+                produto.status === 'ativo' ? 'bg-emerald-500/10 text-emerald-400 border border-emerald-500/20' : 'bg-slate-800 text-slate-400'
+              }`}>
+                {produto.status === 'ativo' ? '● Disponível' : 'Indisponível'}
+              </span>
+            </div>
+          </div>
+
+          {produto.resumo && (
+            <p class="text-base text-slate-300 leading-relaxed">
+              {produto.resumo}
+            </p>
+          )}
+
+          <!-- Ação Principal de Conversão WhatsApp -->
+          <div class="p-6 rounded-2xl bg-gradient-to-br from-indigo-950/40 to-slate-900 border border-indigo-500/20 space-y-4">
+            <h3 class="text-sm font-bold text-white uppercase tracking-wider">Interessado nesta solução?</h3>
+            <p class="text-xs text-slate-400">Clique abaixo para iniciar atendimento direto via WhatsApp com nossa equipe técnica.</p>
+            <Button href={whatsappUrl} variant="primary" size="lg" target="_blank" class="w-full justify-center shadow-lg shadow-indigo-600/30">
+              Solicitar Orçamento no WhatsApp
+            </Button>
+          </div>
+
+          <!-- Descrição Completa -->
+          {produto.descricaoCompleta && (
+            <div class="pt-6 border-t border-slate-800 space-y-3">
+              <h3 class="text-lg font-bold text-white font-display">Detalhes da Solução</h3>
+              <p class="text-sm text-slate-400 leading-relaxed whitespace-pre-line">
+                {produto.descricaoCompleta}
+              </p>
+            </div>
+          )}
+
+          <!-- Especificações Técnicas -->
+          {produto.especificacoes && Object.keys(produto.especificacoes).length > 0 && (
+            <div class="pt-6 border-t border-slate-800 space-y-3">
+              <h3 class="text-sm font-bold text-slate-300 uppercase tracking-wider">Especificações & Requisitos</h3>
+              <div class="grid grid-cols-2 gap-3">
+                {Object.entries(produto.especificacoes).map(([key, val]) => (
+                  <div class="p-3 rounded-xl bg-slate-900/60 border border-slate-800">
+                    <span class="text-[11px] uppercase font-semibold text-slate-400 block">{key}</span>
+                    <span class="text-xs font-bold text-white mt-0.5 block">{val}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
+        </div>
+      </div>
+    </div>
+  </main>
+</BaseLayout>

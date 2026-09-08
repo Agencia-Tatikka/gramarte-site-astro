@@ -1,0 +1,44 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Hero from '@/components/sections/Hero.astro';
+import ServicesGrid from '@/components/sections/ServicesGrid.astro';
+import Features from '@/components/sections/Features.astro';
+import SocialProof from '@/components/sections/SocialProof.astro';
+import ContactForm from '@/components/sections/ContactForm.astro';
+import FAQ from '@/components/sections/FAQ.astro';
+import CTASection from '@/components/sections/CTASection.astro';
+import CatalogGrid from '@/components/catalog/CatalogGrid.astro';
+import BlogGrid from '@/components/blog/BlogGrid.astro';
+import { getProdutos, getPosts } from '@/db/schema';
+import { siteConfig } from '@/config/site.config';
+
+const produtosDestaque = await getProdutos({ destaqueApenas: true });
+const ultimosPosts = await getPosts({ limit: 3 });
+---
+
+<BaseLayout>
+  <Hero />
+  <ServicesGrid />
+  {siteConfig.features.enableCatalog && produtosDestaque.length > 0 && (
+    <CatalogGrid
+      produtos={produtosDestaque}
+      title="Soluções em Destaque"
+      subtitle="Conheça nossos produtos e serviços mais demandados pelo mercado."
+      showFilters={false}
+    />
+  )}
+  <Features />
+  <SocialProof />
+  {siteConfig.features.enableBlog && ultimosPosts.length > 0 && (
+    <BlogGrid
+      posts={ultimosPosts}
+      title="Últimos Artigos & Insights"
+      subtitle="Conteúdos selecionados para impulsionar a estratégia e o crescimento do seu negócio."
+      showFilters={false}
+    />
+  )}
+  <ContactForm />
+  <FAQ />
+  <CTASection />
+</BaseLayout>
+

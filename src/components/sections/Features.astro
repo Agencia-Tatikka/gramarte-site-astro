@@ -1,0 +1,51 @@
+---
+const features = [
+  {
+    title: "Zero JavaScript Desnecessário",
+    desc: "Sites construídos com Astro carregam instantaneamente sem o peso de frameworks pesados no mobile.",
+    icon: "⚡"
+  },
+  {
+    title: "Tracking de Conversão Nativo",
+    desc: "Rastreamento inteligente de Meta Pixel e Google Analytics configurados em cada botão de ação.",
+    icon: "🎯"
+  },
+  {
+    title: "Design Responsivo & Imersivo",
+    desc: "Experiência impecável em smartphones, tablets e telas 4K seguindo padrões de UX modernos.",
+    icon: "📱"
+  },
+  {
+    title: "SEO Técnico & Schema Markup",
+    desc: "Estrutura semântica de HTML5 e microdados prontos para indexação imediata no topo do Google.",
+    icon: "🔍"
+  }
+];
+---
+
+<section id="diferenciais" class="py-20 bg-slate-900/40 border-y border-slate-800/60">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center max-w-3xl mx-auto mb-16">
+      <h2 class="text-xs uppercase font-bold tracking-widest text-indigo-400 mb-3">Engenharia de Ponta</h2>
+      <h3 class="text-3xl sm:text-4xl font-extrabold font-display text-white tracking-tight">
+        Por que os projetos da Tatikka geram mais resultados?
+      </h3>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+      {features.map((item) => (
+        <div class="p-8 rounded-2xl bg-slate-900/80 border border-slate-800 hover:border-indigo-500/40 transition-all duration-300 group hover:-translate-y-1">
+          <div class="text-4xl mb-6 p-3 w-fit rounded-xl bg-slate-800/80 group-hover:bg-indigo-950/60 transition-colors">
+            {item.icon}
+          </div>
+          <h4 class="text-lg font-bold font-display text-white mb-3 group-hover:text-indigo-300 transition-colors">
+            {item.title}
+          </h4>
+          <p class="text-sm text-slate-400 leading-relaxed">
+            {item.desc}
+          </p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

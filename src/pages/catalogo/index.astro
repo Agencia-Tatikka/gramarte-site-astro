@@ -1,0 +1,48 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import CatalogGrid from '@/components/catalog/CatalogGrid.astro';
+import CTASection from '@/components/sections/CTASection.astro';
+import { getProdutos } from '@/db/schema';
+import { siteConfig } from '@/config/site.config';
+
+// Busca produtos direto do Turso
+const produtos = await getProdutos();
+---
+
+<BaseLayout
+  title={`Catálogo de Soluções & Serviços | ${siteConfig.name}`}
+  description={`Conheça nosso portfólio completo de soluções de alta performance desenvolvidas pela ${siteConfig.name}.`}
+>
+  <main class="pt-24">
+    <!-- Header Institucional do Catálogo -->
+    <div class="relative py-16 bg-slate-950 border-b border-slate-800/80">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <span class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold bg-indigo-500/10 text-indigo-400 border border-indigo-500/20 mb-4">
+          ✦ Vitrine Exclusiva
+        </span>
+        <h1 class="text-4xl sm:text-5xl font-extrabold font-display text-white tracking-tight">
+          Nossas Soluções & Portfólio
+        </h1>
+        <p class="mt-4 text-lg text-slate-400 max-w-2xl mx-auto">
+          Projetadas para máxima eficiência, segurança jurídica e aceleração de resultados para a sua empresa.
+        </p>
+      </div>
+    </div>
+
+    <!-- Grade com Filtros -->
+    <CatalogGrid
+      produtos={produtos}
+      title="Todos os Produtos & Serviços"
+      subtitle="Filtre por categoria e descubra a solução ideal para o seu momento."
+      showFilters={true}
+    />
+
+    <!-- Bloco de Contato Rápido -->
+    <CTASection
+      title="Precisa de uma Solução Sob Medida?"
+      subtitle="Nossa equipe analisa as necessidades específicas do seu negócio e desenha uma proposta exclusiva."
+      buttonText="Falar com Consultor no WhatsApp"
+      buttonHref={`https://wa.me/${siteConfig.contact.whatsapp}?text=${encodeURIComponent('Olá! Gostaria de uma solução personalizada para minha empresa.')}`}
+    />
+  </main>
+</BaseLayout>

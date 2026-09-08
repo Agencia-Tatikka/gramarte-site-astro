@@ -1,0 +1,62 @@
+---
+import { siteConfig } from '@/config/site.config';
+---
+
+{siteConfig.features.enableLgpdBanner && (
+  <div
+    id="lgpd-banner"
+    class="fixed bottom-4 left-4 right-4 md:left-auto md:right-4 md:max-w-md z-50 p-5 rounded-2xl bg-slate-950/95 backdrop-blur-xl border border-slate-800 shadow-2xl shadow-indigo-950/40 hidden translate-y-4 transition-all duration-300"
+  >
+    <div class="flex items-start gap-3">
+      <div class="p-2 rounded-xl bg-indigo-500/10 text-indigo-400 border border-indigo-500/20 shrink-0">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+        </svg>
+      </div>
+
+      <div class="flex-1 text-xs text-slate-300 leading-relaxed">
+        <p class="font-bold text-white text-sm mb-1">Privacidade & Cookies</p>
+        <p>
+          Utilizamos cookies e tecnologias semelhantes para aprimorar sua experiência e analisar o tráfego em conformidade com a LGPD.
+          Consulte nossa <a href="/privacidade" class="text-indigo-400 underline hover:text-indigo-300">Política de Privacidade</a>.
+        </p>
+      </div>
+    </div>
+
+    <div class="mt-4 flex items-center justify-end gap-2 pt-3 border-t border-slate-800/80">
+      <button
+        id="lgpd-accept-btn"
+        type="button"
+        class="px-4 py-2 rounded-xl text-xs font-bold bg-indigo-600 hover:bg-indigo-500 text-white transition-all shadow-md shadow-indigo-600/20"
+      >
+        Entendido e Aceitar
+      </button>
+    </div>
+  </div>
+)}
+
+<script>
+  // Controle de exibição do banner LGPD via localStorage
+  const banner = document.getElementById('lgpd-banner');
+  const acceptBtn = document.getElementById('lgpd-accept-btn');
+
+  if (banner && acceptBtn) {
+    const consent = localStorage.getItem('tatikka_lgpd_consent');
+    if (!consent) {
+      setTimeout(() => {
+        banner.classList.remove('hidden');
+        setTimeout(() => {
+          banner.classList.remove('translate-y-4');
+        }, 50);
+      }, 1000);
+    }
+
+    acceptBtn.addEventListener('click', () => {
+      localStorage.setItem('tatikka_lgpd_consent', 'true');
+      banner.classList.add('translate-y-4', 'opacity-0');
+      setTimeout(() => {
+        banner.remove();
+      }, 300);
+    });
+  }
+</script>

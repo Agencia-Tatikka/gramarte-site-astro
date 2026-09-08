@@ -1,0 +1,85 @@
+---
+const testimonials = [
+  {
+    name: "Rodrigo Silveira",
+    role: "Diretor Comercial, Strozzi Advogados",
+    quote: "A nova landing page reduziu nosso custo de aquisição de clientes em 42% no primeiro mês de campanha. A velocidade no mobile é absurda.",
+    rating: 5,
+    avatar: "RS"
+  },
+  {
+    name: "Mariana Mendes",
+    role: "Fundadora, A Sementeira Home Decor",
+    quote: "O site institucional transmitiu exatamente o posicionamento premium que a nossa marca precisava. Clientes chegam muito mais preparados para fechar.",
+    rating: 5,
+    avatar: "MM"
+  },
+  {
+    name: "Carlos Eduardo",
+    role: "CEO, Nexo Tecnologia",
+    quote: "A entrega no prazo com nota 99 no PageSpeed foi um divisor de águas. O tracking no GA4 e Pixel funciona perfeitamente sem falhas.",
+    rating: 5,
+    avatar: "CE"
+  }
+];
+
+const logos = [
+  "Strozzi Advogados",
+  "A Sementeira",
+  "Nexo Tech",
+  "Alpha Finanças",
+  "Vanguard Saúde"
+];
+---
+
+<section id="depoimentos" class="py-24 bg-slate-900/30 border-y border-slate-800/60 relative overflow-hidden">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <!-- Logotipos de Autoridade -->
+    <div class="text-center mb-16">
+      <p class="text-xs uppercase font-bold tracking-widest text-slate-500 mb-6">
+        Empresas e Marcas que Confiam na Nossa Engenharia
+      </p>
+      <div class="flex flex-wrap items-center justify-center gap-8 md:gap-16 opacity-60 grayscale hover:grayscale-0 transition-all">
+        {logos.map((logo) => (
+          <span class="text-base sm:text-lg font-bold font-display text-slate-300 tracking-wider">
+            {logo}
+          </span>
+        ))}
+      </div>
+    </div>
+
+    <!-- Depoimentos -->
+    <div class="text-center max-w-3xl mx-auto mb-16">
+      <h2 class="text-xs uppercase font-bold tracking-widest text-indigo-400 mb-3">Prova Real</h2>
+      <h3 class="text-3xl sm:text-4xl font-extrabold font-display text-white tracking-tight">
+        O Que Nossos Clientes Dizem Sobre os Resultados
+      </h3>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      {testimonials.map((item) => (
+        <div class="p-8 rounded-3xl bg-slate-900/80 border border-slate-800 hover:border-amber-500/40 transition-all duration-300 flex flex-col justify-between">
+          <div>
+            <!-- Estrelas -->
+            <div class="flex items-center gap-1 text-amber-400 text-sm mb-6">
+              {"★".repeat(item.rating)}
+            </div>
+            <p class="text-slate-300 text-sm leading-relaxed italic mb-8">
+              "{item.quote}"
+            </p>
+          </div>
+
+          <div class="flex items-center gap-4 pt-4 border-t border-slate-800/60">
+            <div class="w-10 h-10 rounded-full bg-gradient-to-tr from-indigo-600 to-amber-400 flex items-center justify-center font-bold text-white text-xs">
+              {item.avatar}
+            </div>
+            <div>
+              <h5 class="text-sm font-bold text-white">{item.name}</h5>
+              <p class="text-xs text-slate-400">{item.role}</p>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

@@ -1,0 +1,36 @@
+---
+import SEO from '@/components/common/SEO.astro';
+import Header from '@/components/common/Header.astro';
+import Footer from '@/components/common/Footer.astro';
+import WhatsAppButton from '@/components/common/WhatsAppButton.astro';
+import CookieBanner from '@/components/common/CookieBanner.astro';
+import Analytics from '@/components/common/Analytics.astro';
+import '@/styles/global.css';
+
+interface Props {
+  title?: string;
+  description?: string;
+  image?: string;
+  hideHeader?: boolean;
+  hideFooter?: boolean;
+}
+
+const { title, description, image, hideHeader = false, hideFooter = false } = Astro.props;
+---
+
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <SEO title={title} description={description} image={image} />
+    <Analytics />
+  </head>
+  <body class="flex flex-col min-h-screen bg-slate-950 text-slate-100">
+    {!hideHeader && <Header />}
+    <main class="flex-grow pt-20">
+      <slot />
+    </main>
+    {!hideFooter && <Footer />}
+    <WhatsAppButton />
+    <CookieBanner />
+  </body>
+</html>

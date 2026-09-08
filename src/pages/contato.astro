@@ -1,0 +1,59 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import ContactForm from '@/components/sections/ContactForm.astro';
+import FAQ from '@/components/sections/FAQ.astro';
+import { siteConfig } from '@/config/site.config';
+
+const whatsappUrl = `https://wa.me/${siteConfig.contact.whatsapp}?text=${encodeURIComponent(siteConfig.contact.whatsappMessage || '')}`;
+---
+
+<BaseLayout
+  title={`Contato & Orçamentos | ${siteConfig.name}`}
+  description={`Entre em contato com a equipe da ${siteConfig.name} por WhatsApp, e-mail ou formulário para agendar um diagnóstico gratuito.`}
+>
+  <div class="pt-32 pb-8 text-center max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+    <span class="inline-block text-xs uppercase font-bold tracking-widest text-indigo-400 px-3.5 py-1.5 rounded-full bg-indigo-950/80 border border-indigo-500/30 mb-4">
+      Canais de Atendimento
+    </span>
+    <h1 class="text-4xl sm:text-6xl font-extrabold font-display text-white tracking-tight leading-tight mb-6">
+      Estamos Prontos para Iniciar seu Projeto
+    </h1>
+    <p class="text-lg text-slate-400 max-w-2xl mx-auto">
+      Escolha o canal de sua preferência ou preencha o formulário abaixo para receber uma análise técnica sob medida.
+    </p>
+
+    <!-- Cards de Contato Rápido -->
+    <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 max-w-4xl mx-auto mt-12 mb-8 text-left">
+      <a
+        href={whatsappUrl}
+        target="_blank"
+        class="p-6 rounded-2xl bg-slate-900/80 border border-slate-800 hover:border-emerald-500/40 transition-all group"
+      >
+        <div class="text-2xl mb-3 text-emerald-400">💬</div>
+        <h4 class="text-base font-bold text-white group-hover:text-emerald-300">WhatsApp Direto</h4>
+        <p class="text-xs text-slate-400 mt-1">{siteConfig.contact.phone}</p>
+        <span class="text-[11px] text-emerald-400 font-semibold mt-3 inline-block">Iniciar Conversa ➔</span>
+      </a>
+
+      <a
+        href={`mailto:${siteConfig.contact.email}`}
+        class="p-6 rounded-2xl bg-slate-900/80 border border-slate-800 hover:border-indigo-500/40 transition-all group"
+      >
+        <div class="text-2xl mb-3 text-indigo-400">✉️</div>
+        <h4 class="text-base font-bold text-white group-hover:text-indigo-300">E-mail Corporativo</h4>
+        <p class="text-xs text-slate-400 mt-1">{siteConfig.contact.email}</p>
+        <span class="text-[11px] text-indigo-400 font-semibold mt-3 inline-block">Enviar E-mail ➔</span>
+      </a>
+
+      <div class="p-6 rounded-2xl bg-slate-900/80 border border-slate-800">
+        <div class="text-2xl mb-3 text-amber-400">📍</div>
+        <h4 class="text-base font-bold text-white">Localização</h4>
+        <p class="text-xs text-slate-400 mt-1">{siteConfig.contact.address}</p>
+        <span class="text-[11px] text-slate-500 font-semibold mt-3 inline-block">Atendimento Global</span>
+      </div>
+    </div>
+  </div>
+
+  <ContactForm />
+  <FAQ />
+</BaseLayout>

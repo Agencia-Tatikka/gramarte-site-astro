@@ -1,0 +1,48 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import BlogGrid from '@/components/blog/BlogGrid.astro';
+import CTASection from '@/components/sections/CTASection.astro';
+import { getPosts } from '@/db/schema';
+import { siteConfig } from '@/config/site.config';
+
+// Busca posts publicados no Turso
+const posts = await getPosts();
+---
+
+<BaseLayout
+  title={`Blog & Artigos Estratégicos | ${siteConfig.name}`}
+  description={`Confira nossos artigos, análises de tendências e guias práticos sobre negócios, tecnologia e mercado.`}
+>
+  <main class="pt-24">
+    <!-- Header Institucional do Blog -->
+    <div class="relative py-16 bg-slate-950 border-b border-slate-800/80">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <span class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold bg-indigo-500/10 text-indigo-400 border border-indigo-500/20 mb-4">
+          ✦ Conhecimento & Insights
+        </span>
+        <h1 class="text-4xl sm:text-5xl font-extrabold font-display text-white tracking-tight">
+          Blog & Publicações
+        </h1>
+        <p class="mt-4 text-lg text-slate-400 max-w-2xl mx-auto">
+          Estratégias, estudos de caso e insights práticos para impulsionar a tomada de decisão da sua empresa.
+        </p>
+      </div>
+    </div>
+
+    <!-- Grade de Artigos -->
+    <BlogGrid
+      posts={posts}
+      title="Últimas Publicações"
+      subtitle="Conteúdos selecionados pela nossa equipe para você se manter à frente no mercado."
+      showFilters={true}
+    />
+
+    <!-- Bloco de Conversão no Final do Blog -->
+    <CTASection
+      title="Quer Implementar essas Estratégias na sua Empresa?"
+      subtitle="Fale diretamente com os nossos especialistas e receba um diagnóstico exclusivo."
+      buttonText="Falar com Especialista no WhatsApp"
+      buttonHref={`https://wa.me/${siteConfig.contact.whatsapp}?text=${encodeURIComponent('Olá! Li os artigos do blog e gostaria de uma consultoria para minha empresa.')}`}
+    />
+  </main>
+</BaseLayout>

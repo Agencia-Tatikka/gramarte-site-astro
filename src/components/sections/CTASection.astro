@@ -1,0 +1,37 @@
+---
+import Button from '@/components/ui/Button.astro';
+import { siteConfig } from '@/config/site.config';
+
+const whatsappUrl = `https://wa.me/${siteConfig.contact.whatsapp}?text=${encodeURIComponent('Olá! Quero dar o próximo passo e acelerar a presença digital da minha empresa.')}`;
+---
+
+<section class="py-20 relative overflow-hidden">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="relative rounded-3xl p-10 sm:p-16 overflow-hidden bg-gradient-to-br from-indigo-900/60 via-slate-900/90 to-slate-950 border border-indigo-500/30 text-center shadow-2xl">
+      <!-- Glow ambient -->
+      <div class="absolute -top-24 -right-24 w-72 h-72 bg-amber-500/20 blur-[90px] rounded-full pointer-events-none"></div>
+      <div class="absolute -bottom-24 -left-24 w-72 h-72 bg-indigo-600/30 blur-[90px] rounded-full pointer-events-none"></div>
+
+      <div class="relative z-10 max-w-3xl mx-auto">
+        <span class="inline-block text-xs uppercase font-bold tracking-widest text-amber-400 mb-4 px-3.5 py-1.5 rounded-full bg-amber-400/10 border border-amber-400/20">
+          Vagas Limitadas para Novos Projetos
+        </span>
+        <h3 class="text-3xl sm:text-5xl font-extrabold font-display text-white tracking-tight leading-tight mb-6">
+          Sua Empresa Merece um Posicionamento Digital de Alto Nível
+        </h3>
+        <p class="text-slate-300 text-base sm:text-lg mb-10 leading-relaxed">
+          Não perca mais clientes para concorrentes com páginas lentas e amadoras. Construa sua presença web com a tecnologia mais rápida do mercado.
+        </p>
+
+        <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+          <Button href={whatsappUrl} variant="primary" size="lg" target="_blank">
+            Falar Diretamente com um Consultor ➔
+          </Button>
+          <Button href="#contato" variant="secondary" size="lg">
+            Enviar Formulário de Contato
+          </Button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

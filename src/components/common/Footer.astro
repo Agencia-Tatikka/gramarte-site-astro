@@ -1,0 +1,71 @@
+---
+import { siteConfig } from '@/config/site.config';
+const currentYear = new Date().getFullYear();
+const currentNav = siteConfig.navigation;
+---
+
+<footer class="bg-slate-950 border-t border-slate-800/80 pt-16 pb-12">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-12 pb-12 border-b border-slate-800/60">
+      <!-- Coluna 1: Empresa -->
+      <div class="space-y-4 md:col-span-1">
+        <div class="flex items-center gap-3">
+          <div class="w-9 h-9 rounded-xl bg-gradient-to-tr from-indigo-600 to-amber-400 flex items-center justify-center">
+            <span class="text-white font-extrabold text-lg font-display">T</span>
+          </div>
+          <span class="text-lg font-bold font-display text-white">
+            {siteConfig.name}
+          </span>
+        </div>
+        <p class="text-sm text-slate-400 leading-relaxed">
+          {siteConfig.description}
+        </p>
+      </div>
+
+      <!-- Coluna 2: Navegação -->
+      <div>
+        <h4 class="text-xs uppercase font-bold tracking-wider text-slate-300 mb-4">Navegação</h4>
+        <ul class="space-y-2 text-sm text-slate-400">
+          {currentNav.map(item => (
+            <li><a href={item.href} class="hover:text-indigo-400 transition-colors">{item.label}</a></li>
+          ))}
+        </ul>
+      </div>
+
+      <!-- Coluna 3: Contato -->
+      <div>
+        <h4 class="text-xs uppercase font-bold tracking-wider text-slate-300 mb-4">Contato</h4>
+        <ul class="space-y-2 text-sm text-slate-400">
+          <li>{siteConfig.contact.phone}</li>
+          <li>{siteConfig.contact.email}</li>
+          <li>{siteConfig.contact.address}</li>
+        </ul>
+      </div>
+
+      <!-- Coluna 4: Redes & Autoridade -->
+      <div>
+        <h4 class="text-xs uppercase font-bold tracking-wider text-slate-300 mb-4">Redes Sociais</h4>
+        <div class="flex gap-4">
+          {siteConfig.socials.instagram && (
+            <a href={siteConfig.socials.instagram} target="_blank" class="w-10 h-10 rounded-lg bg-slate-900 flex items-center justify-center text-slate-300 hover:text-white hover:bg-slate-800 transition-all">
+              IG
+            </a>
+          )}
+          {siteConfig.socials.linkedin && (
+            <a href={siteConfig.socials.linkedin} target="_blank" class="w-10 h-10 rounded-lg bg-slate-900 flex items-center justify-center text-slate-300 hover:text-white hover:bg-slate-800 transition-all">
+              IN
+            </a>
+          )}
+        </div>
+      </div>
+    </div>
+
+    <!-- Copyright -->
+    <div class="pt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-500 gap-4">
+      <p>© {currentYear} {siteConfig.name}. Todos os direitos reservados.</p>
+      <p class="flex items-center gap-1">
+        Desenvolvido com excelência por <span class="text-indigo-400 font-semibold">Agência Tatikka</span>
+      </p>
+    </div>
+  </div>
+</footer>

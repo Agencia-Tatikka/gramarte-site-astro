@@ -1,0 +1,30 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import ServicesGrid from '@/components/sections/ServicesGrid.astro';
+import Features from '@/components/sections/Features.astro';
+import FAQ from '@/components/sections/FAQ.astro';
+import CTASection from '@/components/sections/CTASection.astro';
+import { siteConfig } from '@/config/site.config';
+---
+
+<BaseLayout
+  title={`Serviços & Soluções | ${siteConfig.name}`}
+  description={`Conheça nosso catálogo completo de soluções em Landing Pages, Sites Institucionais, Otimização de Performance e Tracking de Conversão.`}
+>
+  <div class="pt-32 pb-12 text-center max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+    <span class="inline-block text-xs uppercase font-bold tracking-widest text-amber-400 px-3.5 py-1.5 rounded-full bg-amber-400/10 border border-amber-400/20 mb-4">
+      Portfólio de Serviços
+    </span>
+    <h1 class="text-4xl sm:text-6xl font-extrabold font-display text-white tracking-tight leading-tight mb-6">
+      Soluções Web Projetadas para <span class="gradient-text">Gerar Resultados</span>
+    </h1>
+    <p class="text-lg text-slate-400 max-w-2xl mx-auto">
+      Cada serviço é executado com padrões rigorosos de qualidade técnica, design responsivo e mensuração de métricas reais de retorno.
+    </p>
+  </div>
+
+  <ServicesGrid />
+  <Features />
+  <FAQ />
+  <CTASection />
+</BaseLayout>

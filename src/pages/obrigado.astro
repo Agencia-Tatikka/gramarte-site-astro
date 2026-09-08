@@ -1,0 +1,31 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Button from '@/components/ui/Button.astro';
+import { siteConfig } from '@/config/site.config';
+
+const whatsappUrl = `https://wa.me/${siteConfig.contact.whatsapp}?text=${encodeURIComponent('Olá! Acabei de preencher o formulário no site e gostaria de agilizar meu atendimento.')}`;
+---
+
+<BaseLayout title={`Obrigado! • ${siteConfig.name}`} hideHeader={true} hideFooter={true}>
+  <section class="min-h-screen flex items-center justify-center px-4 py-16">
+    <div class="max-w-md w-full bg-slate-900/90 border border-slate-800 rounded-3xl p-8 text-center glow-box">
+      <div class="w-16 h-16 bg-emerald-500/20 text-emerald-400 rounded-2xl flex items-center justify-center mx-auto mb-6 text-3xl">
+        ✓
+      </div>
+      <h1 class="text-2xl sm:text-3xl font-extrabold font-display text-white mb-3">
+        Solicitação Recebida!
+      </h1>
+      <p class="text-sm text-slate-400 mb-8 leading-relaxed">
+        Nosso time de especialistas já recebeu seus dados e entrará em contato em instantes. Para atendimento imediato, clique abaixo:
+      </p>
+      <div class="space-y-3">
+        <Button href={whatsappUrl} variant="whatsapp" size="lg" class="w-full" target="_blank">
+          Falar Imediatamente no WhatsApp ➔
+        </Button>
+        <Button href="/" variant="secondary" size="md" class="w-full">
+          Voltar para o Início
+        </Button>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

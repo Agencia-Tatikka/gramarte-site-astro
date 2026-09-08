@@ -1,0 +1,79 @@
+---
+import Button from '@/components/ui/Button.astro';
+import { siteConfig } from '@/config/site.config';
+
+const services = [
+  {
+    title: "Landing Pages de Alta Conversão",
+    desc: "Projetadas para campanhas de tráfego pago (Meta Ads e Google Ads) com foco obsessivo em transformar cliques em reuniões e vendas no WhatsApp.",
+    icon: "🎯",
+    tags: ["Copywriting", "Astro 5.x", "Pixel & GA4", "Velocidade Máxima"]
+  },
+  {
+    title: "Sites Institucionais Modernos",
+    desc: "Presença digital completa para empresas e marcas que exigem autoridade, páginas de serviços detalhadas, história da marca e SEO técnico de ponta.",
+    icon: "🏢",
+    tags: ["Multi-Páginas", "Design Premium", "SEO Google", "Responsivo"]
+  },
+  {
+    title: "Otimização de Performance Web",
+    desc: "Aceleração de páginas com nota 90+ no Google PageSpeed Insights para reduzir custo por lead e aumentar a taxa de conversão no mobile.",
+    icon: "⚡",
+    tags: ["Core Web Vitals", "Zero Bloatware", "Cloudflare CDN", "Cache Avançado"]
+  },
+  {
+    title: "Rastreamento & Tracking de Dados",
+    desc: "Configuração profissional de Google Tag Manager, Meta Conversions API e GA4 para relatórios de vendas claros e ROI transparente.",
+    icon: "📊",
+    tags: ["GTM", "Meta Pixel CAPI", "Dashboard", "Eventos Customizados"]
+  }
+];
+
+const whatsappUrl = `https://wa.me/${siteConfig.contact.whatsapp}?text=${encodeURIComponent('Olá! Gostaria de um orçamento para serviços web.')}`;
+---
+
+<section id="servicos" class="py-24 relative overflow-hidden">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+    <div class="text-center max-w-3xl mx-auto mb-16">
+      <h2 class="text-xs uppercase font-bold tracking-widest text-amber-400 mb-3">Nossas Soluções</h2>
+      <h3 class="text-3xl sm:text-4xl font-extrabold font-display text-white tracking-tight">
+        Engenharia Digital Focada em Escalar seu Negócio
+      </h3>
+      <p class="mt-4 text-base text-slate-400">
+        Criamos ecossistemas web sob medida que posicionam sua marca como líder de mercado e geram oportunidades diárias.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+      {services.map((service) => (
+        <div class="p-8 rounded-3xl bg-slate-900/60 border border-slate-800 hover:border-indigo-500/40 transition-all duration-300 group flex flex-col justify-between hover:-translate-y-1">
+          <div>
+            <div class="text-4xl mb-6 p-3 w-fit rounded-2xl bg-indigo-950/40 border border-indigo-500/20 group-hover:scale-110 transition-transform">
+              {service.icon}
+            </div>
+            <h4 class="text-2xl font-bold font-display text-white mb-4 group-hover:text-indigo-300 transition-colors">
+              {service.title}
+            </h4>
+            <p class="text-slate-400 leading-relaxed mb-6 text-sm">
+              {service.desc}
+            </p>
+          </div>
+
+          <div>
+            <div class="flex flex-wrap gap-2 pt-4 border-t border-slate-800/80 mb-6">
+              {service.tags.map((tag) => (
+                <span class="text-xs px-2.5 py-1 rounded-full bg-slate-800/80 text-slate-300 font-medium">
+                  {tag}
+                </span>
+              ))}
+            </div>
+
+            <Button href={whatsappUrl} variant="outline" size="sm" class="w-full" target="_blank">
+              Solicitar Orçamento Deste Serviço ➔
+            </Button>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

@@ -1,0 +1,67 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Button from '@/components/ui/Button.astro';
+import SocialProof from '@/components/sections/SocialProof.astro';
+import CTASection from '@/components/sections/CTASection.astro';
+import { siteConfig } from '@/config/site.config';
+
+const whatsappUrl = `https://wa.me/${siteConfig.contact.whatsapp}?text=${encodeURIComponent('Olá! Gostaria de conversar sobre a história e os serviços da Tatikka.')}`;
+---
+
+<BaseLayout
+  title={`Sobre Nós | ${siteConfig.name}`}
+  description={`Conheça a história, os valores e a engenharia digital por trás da ${siteConfig.name}.`}
+>
+  <div class="pt-32 pb-20 relative overflow-hidden">
+    <!-- Ambient glow -->
+    <div class="absolute top-1/4 left-1/2 -translate-x-1/2 w-[600px] h-[300px] bg-indigo-600/15 blur-[120px] rounded-full pointer-events-none"></div>
+
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <!-- Breadcrumb / Tag -->
+      <div class="text-center mb-8">
+        <span class="inline-block text-xs uppercase font-bold tracking-widest text-indigo-400 px-3.5 py-1.5 rounded-full bg-indigo-950/80 border border-indigo-500/30">
+          Nossa História & Propósito
+        </span>
+      </div>
+
+      <!-- Headline -->
+      <h1 class="text-4xl sm:text-6xl font-extrabold font-display text-white text-center tracking-tight leading-tight mb-8">
+        Transformamos tecnologia em <span class="gradient-text">vantagem competitiva real</span>.
+      </h1>
+
+      <p class="text-lg sm:text-xl text-slate-400 text-center max-w-3xl mx-auto leading-relaxed mb-16">
+        Fundada para libertar empresas de páginas lentas, templates genéricos e promessas vazias. Nossa missão é entregar código de elite com velocidade extrema e foco cirúrgico em conversão.
+      </p>
+
+      <!-- Grade de Valores -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 my-20">
+        <div class="p-8 rounded-3xl bg-slate-900/60 border border-slate-800">
+          <div class="text-3xl mb-4 text-amber-400">⚡</div>
+          <h3 class="text-xl font-bold font-display text-white mb-2">Velocidade Extrema</h3>
+          <p class="text-sm text-slate-400 leading-relaxed">
+            Cada milissegundo conta. Nossas soluções são desenvolvidas para carregar instantaneamente, garantindo nota máxima nos algoritmos de busca.
+          </p>
+        </div>
+
+        <div class="p-8 rounded-3xl bg-slate-900/60 border border-slate-800">
+          <div class="text-3xl mb-4 text-indigo-400">🎯</div>
+          <h3 class="text-xl font-bold font-display text-white mb-2">Foco em Vendas</h3>
+          <p class="text-sm text-slate-400 leading-relaxed">
+            Design bonito sem conversão é custo. Construímos jornadas de usuário estruturadas com copywriting persuasivo e gatilhos de ação direta.
+          </p>
+        </div>
+
+        <div class="p-8 rounded-3xl bg-slate-900/60 border border-slate-800">
+          <div class="text-3xl mb-4 text-emerald-400">📊</div>
+          <h3 class="text-xl font-bold font-display text-white mb-2">Dados & Transparência</h3>
+          <p class="text-sm text-slate-400 leading-relaxed">
+            Sem achismos. Todo lead, clique e evento de conversão é rastreado ponta a ponta com dashboards analíticos em tempo real.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <SocialProof />
+  <CTASection />
+</BaseLayout>

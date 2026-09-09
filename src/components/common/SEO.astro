@@ -7,6 +7,7 @@ interface Props {
   image?: string;
   canonical?: string;
   type?: string;
+  preloadImage?: string;
 }
 
 const {
@@ -14,7 +15,8 @@ const {
   description = siteConfig.description,
   image = `${siteConfig.url}/og-default.jpg`,
   canonical = Astro.url.href,
-  type = 'website'
+  type = 'website',
+  preloadImage
 } = Astro.props;
 
 const structuredData = {
@@ -144,8 +146,10 @@ const structuredData = {
 <!-- JSON-LD Structured Data (LocalBusiness + FAQPage) -->
 <script type="application/ld+json" set:html={JSON.stringify(structuredData)} />
 
-<!-- Preload Critical LCP Image -->
-<link rel="preload" as="image" href="/jardim-hero.webp" type="image/webp" fetchpriority="high" />
+<!-- Preload Critical LCP Image (Conditional) -->
+{preloadImage && (
+  <link rel="preload" as="image" href={preloadImage} type="image/webp" fetchpriority="high" />
+)}
 
 <!-- Google Fonts Preconnect & Display Swap -->
 <link rel="preconnect" href="https://fonts.googleapis.com" />

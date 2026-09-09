@@ -16,6 +16,7 @@ interface Props {
   hideWhatsApp?: boolean;
   hideCookieBanner?: boolean;
   bodyClass?: string;
+  preloadImage?: string;
 }
 
 const { 
@@ -26,14 +27,15 @@ const {
   hideFooter = false, 
   hideWhatsApp = false,
   hideCookieBanner = false,
-  bodyClass = "bg-slate-950 text-slate-100" 
+  bodyClass = "bg-slate-950 text-slate-100",
+  preloadImage
 } = Astro.props;
 ---
 
 <!doctype html>
 <html lang="pt-BR">
   <head>
-    <SEO title={title} description={description} image={image} />
+    <SEO title={title} description={description} image={image} preloadImage={preloadImage} />
     <Analytics />
   </head>
   <body class:list={["flex flex-col min-h-screen", bodyClass]}>

@@ -61,7 +61,7 @@ export const siteConfig: SiteConfig = {
     whatsapp: "5511940466849",
     whatsappMessage: "Olá, Luana! Vim pelo site da Gramarte e gostaria de solicitar uma avaliação técnica e proposta para o meu condomínio.",
     email: "contato@gramarte.com.br",
-    address: "São Paulo, Grande ABC, Litoral e Interior - SP, Brasil",
+    address: "Rua Eliza da Silva Frezolone, 370 - Dos Casa, São Bernardo do Campo - SP",
     webhookUrl: ""
   },
   socials: {

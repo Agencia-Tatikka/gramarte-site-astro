@@ -64,14 +64,21 @@ const instagramUrl = siteConfig.socials.instagram || "https://instagram.com/gram
   <div class="min-h-screen flex flex-col justify-between relative overflow-hidden font-sans">
     
     <!-- Top Header -->
-    <header class="w-full pt-6 pb-4 px-4 sm:px-8 max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4 border-b border-stone-200/70">
+    <header class="w-full pt-6 pb-4 px-4 sm:px-8 max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4 border-b border-stone-200/80">
       <div class="flex items-center justify-center">
-        <img 
-          src="/gramarte-logo-2026.jpg" 
-          alt="Gramarte Paisagismo" 
-          class="w-32 sm:w-36 max-w-[130px] h-auto object-contain transition-transform duration-300 hover:scale-[1.03]"
-          loading="eager"
-        />
+        <picture>
+          <source srcset="/gramarte-logo-2026.webp" type="image/webp" />
+          <img 
+            src="/gramarte-logo-2026.jpg" 
+            alt="Gramarte Paisagismo" 
+            width="130"
+            height="85"
+            class="w-32 sm:w-36 max-w-[130px] h-auto object-contain transition-transform duration-300 hover:scale-[1.03]"
+            loading="eager"
+            fetchpriority="high"
+            decoding="async"
+          />
+        </picture>
       </div>
 
       <div class="flex items-center gap-3">
@@ -79,17 +86,17 @@ const instagramUrl = siteConfig.socials.instagram || "https://instagram.com/gram
           href={instagramUrl}
           target="_blank"
           rel="noopener noreferrer"
-          class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-semibold bg-white text-stone-700 border border-stone-200 hover:border-emerald-300 hover:text-emerald-700 shadow-2xs transition-colors"
+          class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-semibold bg-white text-stone-700 border border-stone-300 hover:border-emerald-600 hover:text-emerald-800 shadow-2xs transition-colors"
           title="Siga a Gramarte no Instagram"
         >
-          <svg class="w-4 h-4 text-emerald-600" fill="currentColor" viewBox="0 0 24 24">
+          <svg class="w-4 h-4 text-emerald-700" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
             <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
           </svg>
           <span>@gramarte.jardinagem</span>
         </a>
 
-        <span class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-semibold bg-emerald-50 text-emerald-800 border border-emerald-200/80 shadow-2xs">
-          <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+        <span class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-semibold bg-emerald-50 text-emerald-900 border border-emerald-300 shadow-2xs">
+          <span class="w-2 h-2 rounded-full bg-emerald-600 animate-pulse"></span>
           Atendimento Ativo
         </span>
       </div>
@@ -99,24 +106,24 @@ const instagramUrl = siteConfig.socials.instagram || "https://instagram.com/gram
     <main class="flex-grow flex flex-col items-center justify-center px-4 sm:px-6 lg:px-8 py-10 max-w-5xl mx-auto text-center w-full">
       
       <!-- Tag / Badge -->
-      <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs sm:text-sm font-semibold bg-stone-100 text-stone-700 border border-stone-200 mb-6 shadow-2xs">
-        <span class="text-emerald-600 font-bold">●</span>
+      <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs sm:text-sm font-semibold bg-stone-100 text-stone-800 border border-stone-300 mb-6 shadow-2xs">
+        <span class="text-emerald-700 font-bold" aria-hidden="true">●</span>
         <span>Novo Site em Construção</span>
       </div>
 
       <!-- Headline -->
       <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold text-stone-900 tracking-tight leading-[1.15] max-w-4xl">
-        Transformamos áreas verdes em <span class="text-emerald-700">espaços vivos</span> e valorizados.
+        Transformamos áreas verdes em <span class="text-emerald-800">espaços vivos</span> e valorizados.
       </h1>
 
       <!-- Description -->
-      <p class="mt-5 text-base sm:text-lg md:text-xl text-stone-600 max-w-3xl leading-relaxed">
-        Estamos cultivando nossa nova experiência digital. Mas o <strong class="text-stone-800 font-semibold">atendimento</strong>, a <strong class="text-stone-800 font-semibold">manutenção de áreas verdes</strong> e a <strong class="text-stone-800 font-semibold">revitalização de jardins</strong> para condomínios já estão disponíveis.
+      <p class="mt-5 text-base sm:text-lg md:text-xl text-stone-700 max-w-3xl leading-relaxed">
+        Estamos cultivando nossa nova experiência digital. Mas o <strong class="text-stone-900 font-semibold">atendimento</strong>, a <strong class="text-stone-900 font-semibold">manutenção de áreas verdes</strong> e a <strong class="text-stone-900 font-semibold">revitalização de jardins</strong> para condomínios já estão disponíveis.
       </p>
 
       <!-- Coverage / Regiões Atendidas -->
-      <div class="mt-5 flex items-center justify-center gap-2 text-xs sm:text-sm font-medium text-stone-600 bg-white/90 px-4 py-2 rounded-xl border border-stone-200/80 shadow-2xs">
-        <svg class="w-4 h-4 text-emerald-600 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <div class="mt-5 flex items-center justify-center gap-2 text-xs sm:text-sm font-medium text-stone-700 bg-white px-4 py-2 rounded-xl border border-stone-300 shadow-2xs">
+        <svg class="w-4 h-4 text-emerald-700 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
         </svg>
@@ -129,9 +136,9 @@ const instagramUrl = siteConfig.socials.instagram || "https://instagram.com/gram
           href={whatsappUrl}
           target="_blank"
           rel="noopener noreferrer"
-          class="w-full sm:w-auto inline-flex items-center justify-center gap-3 px-8 py-4 rounded-xl text-base font-bold text-white bg-emerald-600 hover:bg-emerald-700 active:scale-[0.98] shadow-lg shadow-emerald-600/20 hover:shadow-emerald-600/30 transition-all duration-200 group"
+          class="w-full sm:w-auto inline-flex items-center justify-center gap-3 px-8 py-4 rounded-xl text-base font-bold text-white bg-emerald-700 hover:bg-emerald-800 active:scale-[0.98] shadow-lg shadow-emerald-800/25 hover:shadow-emerald-800/35 transition-all duration-200 group"
         >
-          <svg class="w-5 h-5 fill-current transition-transform duration-200 group-hover:scale-110" viewBox="0 0 24 24">
+          <svg class="w-5 h-5 fill-current transition-transform duration-200 group-hover:scale-110" viewBox="0 0 24 24" aria-hidden="true">
             <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.007c.106.005.249-.04.39.298.144.347.491 1.2.534 1.287.043.087.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.086-.177.18-.076.354.101.174.449.741.964 1.201.662.591 1.221.774 1.394.86s.275.072.376-.043c.101-.116.433-.506.549-.68.116-.173.231-.145.39-.087s1.011.477 1.184.564c.173.087.289.129.332.202.043.073.043.419-.101.824z"/>
           </svg>
           <span>Fale no WhatsApp</span>
@@ -141,9 +148,9 @@ const instagramUrl = siteConfig.socials.instagram || "https://instagram.com/gram
           href={instagramUrl}
           target="_blank"
           rel="noopener noreferrer"
-          class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-4 rounded-xl text-base font-semibold text-stone-700 bg-white hover:bg-stone-50 border border-stone-300 hover:border-emerald-400 active:scale-[0.98] shadow-2xs transition-all duration-200"
+          class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-4 rounded-xl text-base font-semibold text-stone-800 bg-white hover:bg-stone-50 border border-stone-300 hover:border-emerald-600 active:scale-[0.98] shadow-2xs transition-all duration-200"
         >
-          <svg class="w-5 h-5 text-emerald-600" fill="currentColor" viewBox="0 0 24 24">
+          <svg class="w-5 h-5 text-emerald-700" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
             <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
           </svg>
           <span>Instagram</span>
@@ -151,49 +158,55 @@ const instagramUrl = siteConfig.socials.instagram || "https://instagram.com/gram
 
         <a 
           href={`mailto:${siteConfig.contact.email}`}
-          class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-4 rounded-xl text-base font-semibold text-stone-700 bg-white hover:bg-stone-50 border border-stone-300 hover:border-stone-400 active:scale-[0.98] shadow-2xs transition-all duration-200"
+          class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-4 rounded-xl text-base font-semibold text-stone-800 bg-white hover:bg-stone-50 border border-stone-300 hover:border-stone-400 active:scale-[0.98] shadow-2xs transition-all duration-200"
         >
-          <svg class="w-5 h-5 text-stone-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <svg class="w-5 h-5 text-stone-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
           </svg>
           <span>{siteConfig.contact.email}</span>
         </a>
       </div>
 
-      <!-- Trust Badges (Micro-social proof focadas no cliente) -->
-      <div class="mt-6 flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-xs sm:text-sm text-stone-600 font-medium">
+      <!-- Trust Badges -->
+      <div class="mt-6 flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-xs sm:text-sm text-stone-700 font-medium">
         <span class="flex items-center gap-1.5">
-          <svg class="w-4 h-4 text-emerald-600" viewBox="0 0 20 20" fill="currentColor">
+          <svg class="w-4 h-4 text-emerald-700" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
             <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
           </svg>
           Atendimento Consultivo
         </span>
         <span class="flex items-center gap-1.5">
-          <svg class="w-4 h-4 text-emerald-600" viewBox="0 0 20 20" fill="currentColor">
+          <svg class="w-4 h-4 text-emerald-700" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
             <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
           </svg>
           Pontualidade e Compromisso
         </span>
         <span class="flex items-center gap-1.5">
-          <svg class="w-4 h-4 text-emerald-600" viewBox="0 0 20 20" fill="currentColor">
+          <svg class="w-4 h-4 text-emerald-700" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
             <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
           </svg>
           Visita Técnica Sem Compromisso
         </span>
       </div>
 
-      <!-- Showcase Image -->
+      <!-- Showcase Image com Zero CLS e WebP -->
       <div class="mt-12 w-full max-w-4xl rounded-2xl sm:rounded-3xl overflow-hidden shadow-2xl border border-stone-200/80 bg-stone-100 group relative">
-        <img 
-          src="/jardim-hero.jpg" 
-          alt="Jardim exuberante e sustentável Gramarte" 
-          class="w-full h-64 sm:h-80 md:h-[420px] object-cover transition-transform duration-700 group-hover:scale-105"
-          loading="lazy"
-        />
-        <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent flex items-end p-6 sm:p-8">
-          <div class="text-left text-white max-w-xl backdrop-blur-md bg-emerald-950/40 p-4 sm:p-5 rounded-2xl border border-white/15">
+        <picture>
+          <source srcset="/jardim-hero.webp" type="image/webp" />
+          <img 
+            src="/jardim-hero.jpg" 
+            alt="Jardim exuberante e sustentável Gramarte" 
+            width="1100"
+            height="821"
+            class="w-full h-64 sm:h-80 md:h-[420px] object-cover transition-transform duration-700 group-hover:scale-105"
+            loading="lazy"
+            decoding="async"
+          />
+        </picture>
+        <div class="absolute inset-0 bg-gradient-to-t from-black/75 via-black/25 to-transparent flex items-end p-6 sm:p-8">
+          <div class="text-left text-white max-w-xl backdrop-blur-md bg-emerald-950/50 p-4 sm:p-5 rounded-2xl border border-white/20">
             <p class="text-xs uppercase tracking-wider text-emerald-300 font-bold mb-1">Qualidade & Sustentabilidade</p>
-            <p class="text-sm sm:text-base text-stone-100 font-medium">
+            <p class="text-sm sm:text-base text-stone-100 font-medium leading-relaxed">
               Cuidado minucioso em cada detalhe botânico para valorizar o seu condomínio com saúde vegetal e beleza duradoura.
             </p>
           </div>
@@ -204,7 +217,7 @@ const instagramUrl = siteConfig.socials.instagram || "https://instagram.com/gram
       <div class="mt-16 w-full text-left">
         <div class="text-center mb-8">
           <h2 class="text-2xl sm:text-3xl font-bold text-stone-900">Especialidades & Soluções</h2>
-          <p class="mt-2 text-sm sm:text-base text-stone-600">Clique em qualquer serviço para conversar diretamente com nossa equipe no WhatsApp:</p>
+          <p class="mt-2 text-sm sm:text-base text-stone-700">Clique em qualquer serviço para conversar diretamente com nossa equipe no WhatsApp:</p>
         </div>
 
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -216,25 +229,25 @@ const instagramUrl = siteConfig.socials.instagram || "https://instagram.com/gram
                 target="_blank"
                 rel="noopener noreferrer"
                 class:list={[
-                  "p-6 rounded-2xl bg-white border border-stone-200/80 shadow-2xs transition-all duration-300 flex flex-col justify-between group hover:border-emerald-500 hover:shadow-md hover:-translate-y-1 relative cursor-pointer",
+                  "p-6 rounded-2xl bg-white border border-stone-200/80 shadow-2xs transition-all duration-300 flex flex-col justify-between group hover:border-emerald-600 hover:shadow-md hover:-translate-y-1 relative cursor-pointer",
                   index === 6 && "sm:col-span-2 lg:col-span-1"
                 ]}
               >
                 <div>
-                  <div class="w-12 h-12 rounded-xl bg-emerald-50 text-emerald-800 flex items-center justify-center text-2xl mb-4 border border-emerald-100 group-hover:bg-emerald-600 group-hover:text-white transition-colors duration-300 shadow-2xs">
+                  <div class="w-12 h-12 rounded-xl bg-emerald-50 text-emerald-900 flex items-center justify-center text-2xl mb-4 border border-emerald-200 group-hover:bg-emerald-700 group-hover:text-white transition-colors duration-300 shadow-2xs">
                     {servico.icone}
                   </div>
-                  <h3 class="text-lg font-bold text-stone-900 group-hover:text-emerald-700 transition-colors">
+                  <h3 class="text-lg font-bold text-stone-900 group-hover:text-emerald-800 transition-colors">
                     {servico.titulo}
                   </h3>
-                  <p class="mt-2 text-sm text-stone-600 leading-relaxed">
+                  <p class="mt-2 text-sm text-stone-700 leading-relaxed">
                     {servico.descricao}
                   </p>
                 </div>
                 
-                <div class="mt-4 pt-3 border-t border-stone-100 flex items-center justify-between text-xs font-semibold text-emerald-700 group-hover:text-emerald-800">
+                <div class="mt-4 pt-3 border-t border-stone-100 flex items-center justify-between text-xs font-bold text-emerald-800 group-hover:text-emerald-900">
                   <span>Solicitar Orçamento</span>
-                  <svg class="w-4 h-4 transition-transform duration-200 group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <svg class="w-4 h-4 transition-transform duration-200 group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
                   </svg>
                 </div>
@@ -253,23 +266,23 @@ const instagramUrl = siteConfig.socials.instagram || "https://instagram.com/gram
         target="_blank"
         rel="noopener noreferrer"
         aria-label="Fale Conosco no WhatsApp"
-        class="flex items-center justify-center w-14 h-14 bg-emerald-600 hover:bg-emerald-500 text-white rounded-full shadow-2xl shadow-emerald-700/40 transition-all duration-300 hover:scale-110 active:scale-95 focus:outline-none focus:ring-4 focus:ring-emerald-300 relative"
+        class="flex items-center justify-center w-14 h-14 bg-emerald-700 hover:bg-emerald-600 text-white rounded-full shadow-2xl shadow-emerald-900/40 transition-all duration-300 hover:scale-110 active:scale-95 focus:outline-none focus:ring-4 focus:ring-emerald-300 relative"
       >
-        <span class="absolute inset-0 rounded-full bg-emerald-500 animate-ping opacity-25"></span>
-        <svg class="w-7 h-7 fill-current relative z-10" viewBox="0 0 24 24">
+        <span class="absolute inset-0 rounded-full bg-emerald-600 animate-ping opacity-25"></span>
+        <svg class="w-7 h-7 fill-current relative z-10" viewBox="0 0 24 24" aria-hidden="true">
           <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/>
         </svg>
       </a>
     </aside>
 
-    <!-- Footer Simples e Limpo -->
-    <footer class="w-full py-8 px-4 border-t border-stone-200/70 text-center text-xs text-stone-500">
+    <!-- Footer Simples, Limpo e Acessível (WCAG AA) -->
+    <footer class="w-full py-8 px-4 border-t border-stone-200/80 text-center text-xs text-stone-600">
       <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
         <p>© {new Date().getFullYear()} {siteConfig.name} — CNPJ 54.094.244/0001-00. Todos os direitos reservados.</p>
-        <div class="flex items-center gap-4 text-stone-500">
-          <a href={instagramUrl} target="_blank" rel="noopener noreferrer" class="hover:text-emerald-700 transition-colors">Instagram</a>
-          <span>•</span>
-          <a href={`mailto:${siteConfig.contact.email}`} class="hover:text-emerald-700 transition-colors">{siteConfig.contact.email}</a>
+        <div class="flex items-center gap-4 text-stone-700 font-medium">
+          <a href={instagramUrl} target="_blank" rel="noopener noreferrer" class="hover:text-emerald-800 transition-colors">Instagram</a>
+          <span aria-hidden="true">•</span>
+          <a href={`mailto:${siteConfig.contact.email}`} class="hover:text-emerald-800 transition-colors">{siteConfig.contact.email}</a>
         </div>
       </div>
     </footer>

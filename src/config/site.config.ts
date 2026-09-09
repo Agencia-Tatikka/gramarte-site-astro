@@ -59,7 +59,7 @@ export const siteConfig: SiteConfig = {
   contact: {
     phone: "(11) 94046-6849",
     whatsapp: "5511940466849",
-    whatsappMessage: "Olá, Luana! Vim pelo site da Gramarte e gostaria de agendar uma visita técnica gratuita para o meu condomínio.",
+    whatsappMessage: "Olá, Luana! Vim pelo site da Gramarte e gostaria de solicitar uma avaliação técnica e proposta para o meu condomínio.",
     email: "contato@gramarte.com.br",
     address: "São Paulo, Grande ABC, Litoral e Interior - SP, Brasil",
     webhookUrl: ""

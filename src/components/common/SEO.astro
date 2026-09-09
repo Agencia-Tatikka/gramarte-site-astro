@@ -144,7 +144,14 @@ const structuredData = {
 <!-- JSON-LD Structured Data (LocalBusiness + FAQPage) -->
 <script type="application/ld+json" set:html={JSON.stringify(structuredData)} />
 
-<!-- Google Fonts Preconnect -->
+<!-- Preload Critical LCP Image -->
+<link rel="preload" as="image" href="/jardim-hero.webp" type="image/webp" fetchpriority="high" />
+
+<!-- Google Fonts Preconnect & Display Swap -->
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" />
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'" />
+<noscript>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+</noscript>

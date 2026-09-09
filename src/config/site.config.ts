@@ -49,7 +49,7 @@ export interface SiteConfig {
 
 export const siteConfig: SiteConfig = {
   name: "Gramarte",
-  tagline: "Paisagismo & Manutenção Especializada de Condomínios",
+  tagline: "Paisagismo e Jardinagem Especializada para Condomínios",
   description: "Especialistas em manutenção de áreas verdes, jardinagem e revitalização paisagística para condomínios residenciais em São Paulo, Grande ABC e Alphaville.",
   url: "https://gramarte.com.br",
   routes: {

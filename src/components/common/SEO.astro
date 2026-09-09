@@ -16,6 +16,97 @@ const {
   canonical = Astro.url.href,
   type = 'website'
 } = Astro.props;
+
+const structuredData = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "LandscapeService",
+      "@id": "https://gramarte.com.br/#localbusiness",
+      "name": "Gramarte Paisagismo & Manutenção de Jardins",
+      "url": "https://gramarte.com.br",
+      "telephone": "+55-11-94046-6849",
+      "email": "contato@gramarte.com.br",
+      "image": "https://gramarte.com.br/gramarte-logo-2026.jpg",
+      "logo": "https://gramarte.com.br/gramarte-logo-2026.jpg",
+      "description": "Especialistas em paisagismo, implantação, poda e manutenção preventiva de áreas verdes para condomínios residenciais e comerciais.",
+      "taxID": "54.094.244/0001-00",
+      "priceRange": "$$",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "São Bernardo do Campo",
+        "addressRegion": "SP",
+        "addressCountry": "BR"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": -23.6944,
+        "longitude": -46.5654
+      },
+      "areaServed": [
+        { "@type": "City", "name": "São Paulo" },
+        { "@type": "City", "name": "Santo André" },
+        { "@type": "City", "name": "São Bernardo do Campo" },
+        { "@type": "City", "name": "São Caetano do Sul" },
+        { "@type": "City", "name": "Barueri" },
+        { "@type": "City", "name": "Santana de Parnaíba" },
+        { "@type": "City", "name": "Cotia" },
+        { "@type": "AdministrativeArea", "name": "Grande ABC" },
+        { "@type": "AdministrativeArea", "name": "Litoral de São Paulo" },
+        { "@type": "AdministrativeArea", "name": "Interior de São Paulo" }
+      ],
+      "sameAs": [
+        "https://instagram.com/gramarte.jardinagem"
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://gramarte.com.br/#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Como funciona a solicitação de orçamento e visita técnica?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "A visita técnica é 100% gratuita e sem compromisso para condomínios em São Paulo, Grande ABC, Litoral e Interior. Realizamos o diagnóstico presencial da área verde para apresentar uma proposta sob medida."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "A Gramarte fornece os insumos e adubos na manutenção mensal?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Sim. Nossos planos de manutenção contínua já incluem o cronograma preventivo com fertilizantes de alta performance, correção de solo e controle biológico de pragas, sem custos adicionais imprevistos."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Qual é a frequência de atendimento e visitas da equipe?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Montamos um cronograma fixo semanal ou quinzenal alinhado com o síndico e a zeladoria, garantindo pontualidade rigorosa e atendimento ágil para manutenções programadas."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Quais regiões são atendidas pela Gramarte?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Atendemos condomínios residenciais e comerciais em São Paulo (Capital), Grande ABC (Santo André, SBC, SCS), Alphaville, Cotia, Litoral e Interior de SP."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Como é feito o descarte dos resíduos de podas e cortes?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Todo o descarte verde é ensacado e destinado de forma ambientalmente correta a ecopontos e caçambas credenciadas, mantendo o condomínio totalmente limpo após cada serviço."
+          }
+        }
+      ]
+    }
+  ]
+};
 ---
 
 <meta charset="utf-8" />
@@ -28,6 +119,12 @@ const {
 <meta name="title" content={title} />
 <meta name="description" content={description} />
 <link rel="canonical" href={canonical} />
+
+<!-- Geo Local Meta Tags -->
+<meta name="geo.region" content="BR-SP" />
+<meta name="geo.placename" content="São Paulo, Grande ABC" />
+<meta name="geo.position" content="-23.6944;-46.5654" />
+<meta name="ICBM" content="-23.6944, -46.5654" />
 
 <!-- Open Graph / Facebook -->
 <meta property="og:type" content={type} />
@@ -43,6 +140,9 @@ const {
 <meta property="twitter:title" content={title} />
 <meta property="twitter:description" content={description} />
 <meta property="twitter:image" content={image} />
+
+<!-- JSON-LD Structured Data (LocalBusiness + FAQPage) -->
+<script type="application/ld+json" set:html={JSON.stringify(structuredData)} />
 
 <!-- Google Fonts Preconnect -->
 <link rel="preconnect" href="https://fonts.googleapis.com" />

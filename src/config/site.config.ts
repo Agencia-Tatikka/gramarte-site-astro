@@ -30,6 +30,7 @@ export interface SiteConfig {
     googleAnalyticsId?: string;
     metaPixelId?: string;
     googleTagManagerId?: string;
+    microsoftClarityId?: string;
   };
   database: {
     tursoUrl: string;
@@ -69,9 +70,10 @@ export const siteConfig: SiteConfig = {
     facebook: ""
   },
   tracking: {
-    googleAnalyticsId: "",
+    googleAnalyticsId: "G-E0YX4H0DFL",
     metaPixelId: "",
-    googleTagManagerId: ""
+    googleTagManagerId: "",
+    microsoftClarityId: "yfcmgxlvvt"
   },
   database: {
     tursoUrl: "",

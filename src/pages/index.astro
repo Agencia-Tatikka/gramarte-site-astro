@@ -49,6 +49,7 @@ const servicos = [
 
 const whatsappMainMsg = encodeURIComponent("Olá! Visitei o site da Gramarte e gostaria de solicitar um orçamento para meu condomínio.");
 const whatsappUrl = `https://wa.me/${siteConfig.contact.whatsapp}?text=${whatsappMainMsg}`;
+const instagramUrl = siteConfig.socials.instagram || "https://instagram.com/gramarte.jardinagem";
 ---
 
 <BaseLayout 
@@ -63,29 +64,42 @@ const whatsappUrl = `https://wa.me/${siteConfig.contact.whatsapp}?text=${whatsap
   <div class="min-h-screen flex flex-col justify-between relative overflow-hidden font-sans">
     
     <!-- Top Header -->
-    <header class="w-full pt-8 pb-4 px-4 sm:px-8 max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4 border-b border-stone-200/70">
+    <header class="w-full pt-6 pb-4 px-4 sm:px-8 max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4 border-b border-stone-200/70">
       <div class="flex items-center justify-center">
         <img 
           src="/gramarte-logo-2026.jpg" 
           alt="Gramarte Paisagismo" 
-          class="w-52 sm:w-60 md:w-64 max-w-[260px] h-auto object-contain transition-transform duration-300 hover:scale-[1.02]"
+          class="w-32 sm:w-36 max-w-[130px] h-auto object-contain transition-transform duration-300 hover:scale-[1.03]"
           loading="eager"
         />
       </div>
 
       <div class="flex items-center gap-3">
-        <span class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-semibold bg-emerald-50 text-emerald-800 border border-emerald-200/80 shadow-xs">
+        <a 
+          href={instagramUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-semibold bg-white text-stone-700 border border-stone-200 hover:border-emerald-300 hover:text-emerald-700 shadow-2xs transition-colors"
+          title="Siga a Gramarte no Instagram"
+        >
+          <svg class="w-4 h-4 text-emerald-600" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+          </svg>
+          <span>@gramarte.jardinagem</span>
+        </a>
+
+        <span class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-semibold bg-emerald-50 text-emerald-800 border border-emerald-200/80 shadow-2xs">
           <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
-          Atendimento Ativo para Condomínios
+          Atendimento Ativo
         </span>
       </div>
     </header>
 
     <!-- Main Content -->
-    <main class="flex-grow flex flex-col items-center justify-center px-4 sm:px-6 lg:px-8 py-12 max-w-5xl mx-auto text-center w-full">
+    <main class="flex-grow flex flex-col items-center justify-center px-4 sm:px-6 lg:px-8 py-10 max-w-5xl mx-auto text-center w-full">
       
       <!-- Tag / Badge -->
-      <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs sm:text-sm font-semibold bg-stone-100 text-stone-700 border border-stone-200 mb-8 shadow-2xs">
+      <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs sm:text-sm font-semibold bg-stone-100 text-stone-700 border border-stone-200 mb-6 shadow-2xs">
         <span class="text-emerald-600 font-bold">●</span>
         <span>Novo Site em Construção</span>
       </div>
@@ -96,12 +110,12 @@ const whatsappUrl = `https://wa.me/${siteConfig.contact.whatsapp}?text=${whatsap
       </h1>
 
       <!-- Description -->
-      <p class="mt-6 text-base sm:text-lg md:text-xl text-stone-600 max-w-3xl leading-relaxed">
+      <p class="mt-5 text-base sm:text-lg md:text-xl text-stone-600 max-w-3xl leading-relaxed">
         Estamos cultivando nossa nova experiência digital. Mas o <strong class="text-stone-800 font-semibold">atendimento</strong>, a <strong class="text-stone-800 font-semibold">manutenção de áreas verdes</strong> e a <strong class="text-stone-800 font-semibold">revitalização de jardins</strong> para condomínios já estão disponíveis.
       </p>
 
       <!-- Coverage / Regiões Atendidas -->
-      <div class="mt-6 flex items-center justify-center gap-2 text-xs sm:text-sm font-medium text-stone-600 bg-white/80 px-4 py-2 rounded-xl border border-stone-200/80 shadow-2xs">
+      <div class="mt-5 flex items-center justify-center gap-2 text-xs sm:text-sm font-medium text-stone-600 bg-white/90 px-4 py-2 rounded-xl border border-stone-200/80 shadow-2xs">
         <svg class="w-4 h-4 text-emerald-600 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
@@ -124,8 +138,20 @@ const whatsappUrl = `https://wa.me/${siteConfig.contact.whatsapp}?text=${whatsap
         </a>
 
         <a 
+          href={instagramUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-4 rounded-xl text-base font-semibold text-stone-700 bg-white hover:bg-stone-50 border border-stone-300 hover:border-emerald-400 active:scale-[0.98] shadow-2xs transition-all duration-200"
+        >
+          <svg class="w-5 h-5 text-emerald-600" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+          </svg>
+          <span>Instagram</span>
+        </a>
+
+        <a 
           href={`mailto:${siteConfig.contact.email}`}
-          class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-4 rounded-xl text-base font-semibold text-stone-700 bg-white hover:bg-stone-50 border border-stone-300 hover:border-stone-400 active:scale-[0.98] shadow-xs transition-all duration-200"
+          class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-4 rounded-xl text-base font-semibold text-stone-700 bg-white hover:bg-stone-50 border border-stone-300 hover:border-stone-400 active:scale-[0.98] shadow-2xs transition-all duration-200"
         >
           <svg class="w-5 h-5 text-stone-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
@@ -134,7 +160,7 @@ const whatsappUrl = `https://wa.me/${siteConfig.contact.whatsapp}?text=${whatsap
         </a>
       </div>
 
-      <!-- Trust Badges (Micro-social proof) -->
+      <!-- Trust Badges (Micro-social proof focadas no cliente) -->
       <div class="mt-6 flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-xs sm:text-sm text-stone-600 font-medium">
         <span class="flex items-center gap-1.5">
           <svg class="w-4 h-4 text-emerald-600" viewBox="0 0 20 20" fill="currentColor">
@@ -146,7 +172,7 @@ const whatsappUrl = `https://wa.me/${siteConfig.contact.whatsapp}?text=${whatsap
           <svg class="w-4 h-4 text-emerald-600" viewBox="0 0 20 20" fill="currentColor">
             <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
           </svg>
-          Equipe 100% Própria CLT
+          Pontualidade e Compromisso
         </span>
         <span class="flex items-center gap-1.5">
           <svg class="w-4 h-4 text-emerald-600" viewBox="0 0 20 20" fill="currentColor">
@@ -190,7 +216,7 @@ const whatsappUrl = `https://wa.me/${siteConfig.contact.whatsapp}?text=${whatsap
                 target="_blank"
                 rel="noopener noreferrer"
                 class:list={[
-                  "p-6 rounded-2xl bg-white border border-stone-200/80 shadow-xs transition-all duration-300 flex flex-col justify-between group hover:border-emerald-500 hover:shadow-md hover:-translate-y-1 relative cursor-pointer",
+                  "p-6 rounded-2xl bg-white border border-stone-200/80 shadow-2xs transition-all duration-300 flex flex-col justify-between group hover:border-emerald-500 hover:shadow-md hover:-translate-y-1 relative cursor-pointer",
                   index === 6 && "sm:col-span-2 lg:col-span-1"
                 ]}
               >
@@ -239,8 +265,12 @@ const whatsappUrl = `https://wa.me/${siteConfig.contact.whatsapp}?text=${whatsap
     <!-- Footer Simples e Limpo -->
     <footer class="w-full py-8 px-4 border-t border-stone-200/70 text-center text-xs text-stone-500">
       <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
-        <p>© {new Date().getFullYear()} {siteConfig.name} — CNPJ 38.397.697/0001-38. Todos os direitos reservados.</p>
-        <p class="text-stone-400">Jardins & Paisagismo para Condomínios</p>
+        <p>© {new Date().getFullYear()} {siteConfig.name} — CNPJ 54.094.244/0001-00. Todos os direitos reservados.</p>
+        <div class="flex items-center gap-4 text-stone-500">
+          <a href={instagramUrl} target="_blank" rel="noopener noreferrer" class="hover:text-emerald-700 transition-colors">Instagram</a>
+          <span>•</span>
+          <a href={`mailto:${siteConfig.contact.email}`} class="hover:text-emerald-700 transition-colors">{siteConfig.contact.email}</a>
+        </div>
       </div>
     </footer>
 
